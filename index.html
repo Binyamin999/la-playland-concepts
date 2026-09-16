@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>LA Playland Childcare — Website style options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Baloo+2:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Cabin:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{background:#F3F0EA;color:#2a2c31;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;min-height:100vh}
+  @media (prefers-color-scheme: dark){
+    body{background:#1d2024;color:#e9ebee}
+    .home-head .sub{color:#aeb4bd}
+    .pcard{background:#262a2f;border-color:#343a41}
+    .pcard .meta h3{color:#f1f3f6}
+    .pcard .meta p{color:#aeb4bd}
+    .pcard .tapnote{color:#8b929c}
+    .home-foot{color:#8b929c}
+    .vbar{background:#1a1d21;border-color:#2d3238}
+    .vbar .vtitle{color:#eef0f3}
+    .vbar button, .vbar a{color:#dfe3e8;border-color:#3a4048}
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+
+  /* ============ LANDING ============ */
+  .home{max-width:1000px;margin:0 auto;padding:clamp(28px,6vw,60px) clamp(18px,5vw,40px) 60px}
+  .home-head{text-align:center;max-width:640px;margin:0 auto clamp(28px,5vw,44px)}
+  .logo{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.01em;font-family:'Manrope',sans-serif}
+  .logo .mk{width:40px;height:40px;border-radius:13px;background:#F6C453;display:grid;place-items:center;font-size:21px}
+  .home-head h1{font-family:'Manrope',sans-serif;font-size:clamp(26px,5vw,40px);line-height:1.1;letter-spacing:-.02em;margin:22px 0 0;color:inherit}
+  .home-head .sub{font-size:clamp(15px,2.4vw,18px);line-height:1.6;color:#5f6570;margin-top:14px}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.5vw,22px)}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+
+  .pcard{display:block;background:#fff;border:1px solid #e6e2d8;border-radius:22px;overflow:hidden;cursor:pointer;
+    box-shadow:0 10px 26px rgba(40,36,30,.06);transition:transform .18s ease, box-shadow .18s ease;text-align:left}
+  .pcard:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(40,36,30,.13)}
+  .pcard:active{transform:translateY(-1px)}
+  .pcard:focus-visible{outline:3px solid #7ba6ff;outline-offset:3px}
+
+  /* preview window — shows each concept's real palette + font */
+  .pv{height:210px;padding:24px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+  .pv .pk{font-size:11.5px;font-weight:700;margin-bottom:8px;opacity:.9}
+  .pv .ph{font-size:23px;line-height:1.12;letter-spacing:-.01em;max-width:12ch}
+  .pv .pp{font-size:12.5px;margin-top:8px;opacity:.85;max-width:24ch;line-height:1.45}
+  .pv .ppill{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;width:max-content}
+
+  .pcard .meta{padding:16px 20px 20px}
+  .pcard .meta .cnum{font-size:12px;font-weight:700;color:#a59a86}
+  .pcard .meta h3{font-family:'Manrope',sans-serif;font-size:18px;letter-spacing:-.01em;color:#2a2c31;margin-top:2px}
+  .pcard .meta p{font-size:13.5px;color:#6a7078;margin-top:4px;line-height:1.5}
+  .pcard .tapnote{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:700;color:#9098a2}
+
+  /* per-concept preview looks */
+  .pv[data-go="playful"]{background:
+    radial-gradient(circle at 88% 20%,#B9E5C9 0 40px,transparent 41px),
+    radial-gradient(circle at 12% 88%,#BFE3F2 0 34px,transparent 35px),#FFFDF7;color:#26324D;font-family:'Fredoka',sans-serif}
+  .pv[data-go="playful"] .pk{color:#FF6B6B}
+  .pv[data-go="playful"] .ppill{background:#FF6B6B;color:#fff}
+
+  .pv[data-go="cozy"]{background:linear-gradient(160deg,#FBEFE6,#F3D9C6);color:#4A3B34;font-family:'Baloo 2',sans-serif}
+  .pv[data-go="cozy"] .pk{color:#C36C63}
+  .pv[data-go="cozy"] .ppill{background:#D67F77;color:#fff}
+
+  .pv[data-go="modern"]{background:linear-gradient(160deg,#F1FBFA,#ffffff);color:#16233A;font-family:'Manrope',sans-serif;border-bottom:1px solid #e9f0ee}
+  .pv[data-go="modern"] .pk{color:#0FB5A6}
+  .pv[data-go="modern"] .ppill{background:#0FB5A6;color:#fff}
+
+  .pv[data-go="natural"]{background:#EFEDE1;color:#3A4030;font-family:'Cabin',sans-serif}
+  .pv[data-go="natural"] .pk{color:#586B3A}
+  .pv[data-go="natural"] .ppill{background:#586B3A;color:#fff}
+
+  .home-foot{text-align:center;color:#8a8272;font-size:13px;margin-top:34px;line-height:1.6}
+
+  /* ============ VIEWER ============ */
+  #viewer{position:fixed;inset:0;background:var(--bg,#fff);z-index:40;display:flex;flex-direction:column}
+  #viewer[hidden]{display:none}
+  .vbar{flex:none;display:flex;align-items:center;gap:10px;justify-content:space-between;
+    padding:10px clamp(12px,4vw,20px);background:#ffffff;border-bottom:1px solid #e6e2d8}
+  .vbar .vtitle{font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;color:#2a2c31;letter-spacing:-.01em;text-align:center;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .vbar button, .vbar .back{font-family:'Manrope',sans-serif;font-weight:700;font-size:13.5px;background:#fff;border:1.5px solid #ddd8cd;color:#2a2c31;
+    border-radius:10px;padding:8px 13px;cursor:pointer;white-space:nowrap}
+  .vbar button:hover,.vbar .back:hover{background:#f6f3ec}
+  .vbar .nav{display:flex;gap:6px}
+  .vbar button:focus-visible,.back:focus-visible{outline:3px solid #7ba6ff;outline-offset:2px}
+  .vscroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+
+  /* ===== the full homepage (rendered inside #stage) ===== */
+  #stage{background:var(--bg);color:var(--fg);font-family:var(--font-body)}
+  #stage h1,#stage h2,#stage h3,#stage .brand{font-family:var(--font-display)}
+  #stage .wrap{max-width:960px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  #stage .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,5vw,40px);gap:14px;flex-wrap:wrap}
+  #stage .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;color:var(--fg);letter-spacing:-.01em}
+  #stage .brand .mark{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--primary);color:var(--primary-ink);font-size:20px;flex:none}
+  #stage nav{display:flex;gap:18px;font-size:14px;font-weight:600;color:var(--muted)}
+  #stage nav a:hover{color:var(--fg)}
+  #stage .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:700;font-size:15px;border:none;border-radius:var(--btn-radius,999px);padding:13px 22px;cursor:pointer;transition:transform .12s,filter .15s}
+  #stage .btn:active{transform:translateY(1px)}
+  #stage .btn-call{background:var(--primary);color:var(--primary-ink);box-shadow:var(--shadow)}
+  #stage .btn-call:hover{filter:brightness(1.04)}
+  #stage .btn-tour{background:var(--tour-bg);color:var(--tour-fg);border:var(--tour-border)}
+  #stage .btn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+  #stage .hero{position:relative;overflow:hidden}
+  #stage .hero-inner{max-width:960px;margin:0 auto;padding:clamp(28px,6vw,64px) clamp(20px,5vw,40px) clamp(40px,7vw,72px)}
+  #stage .kicker{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:14px}
+  #stage .hero h1{font-size:clamp(30px,6vw,52px);line-height:1.05;letter-spacing:-.02em;color:var(--fg);max-width:16ch;font-weight:700}
+  #stage .hero p.lede{font-size:clamp(16px,2.4vw,19px);line-height:1.6;color:var(--muted);max-width:52ch;margin-top:18px}
+  #stage .cta-row{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+  #stage .photo{border-radius:var(--photo-radius,20px);background:var(--photo-bg);display:grid;place-items:center;color:var(--photo-fg);font-weight:600;font-size:13px;min-height:220px;position:relative;overflow:hidden}
+  #stage .photo span{opacity:.85;background:rgba(255,255,255,.6);padding:4px 10px;border-radius:999px}
+  #stage .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--facts-line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  #stage .fact{background:var(--surface);padding:20px 16px;text-align:center}
+  #stage .fact .big{font-family:var(--font-display);font-weight:700;font-size:22px;color:var(--fg);letter-spacing:-.01em}
+  #stage .fact .sm{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.35}
+  #stage section.block{padding:clamp(40px,7vw,72px) 0}
+  #stage .eyebrow{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:8px}
+  #stage h2{font-size:clamp(24px,4vw,34px);line-height:1.12;letter-spacing:-.02em;color:var(--fg);max-width:20ch}
+  #stage .sec-lede{color:var(--muted);margin-top:12px;max-width:56ch;line-height:1.6;font-size:16px}
+  #stage .acts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+  #stage .act{background:var(--surface);border-radius:var(--radius);padding:22px;border:var(--card-border,none);box-shadow:var(--card-shadow,none)}
+  #stage .act .ico{font-size:26px;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--ico-bg);margin-bottom:14px}
+  #stage .act h3{font-size:17px;color:var(--fg);letter-spacing:-.01em}
+  #stage .act p{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.5}
+  #stage .about{display:grid;grid-template-columns:1fr 1.1fr;gap:36px;align-items:center}
+  #stage .quote{background:var(--quote-bg);border-radius:var(--radius);padding:clamp(24px,4vw,40px);box-shadow:var(--shadow)}
+  #stage .quote p{font-family:var(--font-display);font-size:clamp(18px,2.6vw,23px);line-height:1.45;color:var(--quote-fg);font-weight:500}
+  #stage .quote .who{margin-top:16px;font-size:14px;color:var(--muted);font-family:var(--font-body);font-weight:600}
+  #stage .quote .who em{font-style:normal;opacity:.7;font-weight:400}
+  #stage .contact{background:var(--contact-bg);color:var(--contact-fg);border-radius:var(--radius);padding:clamp(28px,5vw,48px);text-align:center;box-shadow:var(--shadow)}
+  #stage .contact h2{color:var(--contact-fg);margin:0 auto}
+  #stage .contact .cinfo{margin-top:16px;font-size:16px;line-height:1.8;opacity:.92}
+  #stage .contact .cta-row{justify-content:center}
+  #stage .like{margin-top:22px}
+  #stage .like button{background:transparent;border:1.5px dashed var(--like-border);color:var(--contact-fg);border-radius:999px;padding:10px 18px;font-family:var(--font-body);font-weight:700;font-size:14px;cursor:pointer}
+  #stage .like button:hover{background:var(--like-hover)}
+  #stage footer{padding:26px 0;text-align:center;color:var(--muted);font-size:13px}
+  @media(max-width:760px){
+    #stage nav{display:none}
+    #stage .facts{grid-template-columns:repeat(2,1fr)}
+    #stage .acts{grid-template-columns:1fr 1fr}
+    #stage .about{grid-template-columns:1fr}
+  }
+  @media(max-width:460px){#stage .acts{grid-template-columns:1fr}}
+
+  /* THEME 1 — PLAYFUL */
+  #stage[data-theme="playful"]{--bg:#FFFDF7;--surface:#fff;--fg:#26324D;--muted:#5C6B87;--primary:#FF6B6B;--primary-ink:#fff;--font-display:'Fredoka';--font-body:'Nunito';--radius:26px;--btn-radius:999px;--photo-radius:28px;--shadow:0 16px 34px rgba(38,50,77,.13);--tour-bg:#FFC93C;--tour-fg:#26324D;--tour-border:none;--focus:#3FA7D6;--facts-line:#f0ede3;--photo-bg:linear-gradient(135deg,#FFD66B,#FF9F6B);--photo-fg:#7a4a2a;--ico-bg:#FFF0D6;--quote-bg:#EAF6FB;--quote-fg:#26324D;--contact-bg:linear-gradient(135deg,#3FA7D6,#6BCB77);--contact-fg:#fff;--like-border:rgba(255,255,255,.7);--like-hover:rgba(255,255,255,.15)}
+  #stage[data-theme="playful"] .hero{background:radial-gradient(circle at 12% 18%,#FFE59E 0 60px,transparent 61px),radial-gradient(circle at 88% 12%,#B9E5C9 0 44px,transparent 45px),radial-gradient(circle at 92% 70%,#FFC1C1 0 54px,transparent 55px),radial-gradient(circle at 6% 82%,#BFE3F2 0 40px,transparent 41px),var(--bg)}
+  #stage[data-theme="playful"] .hero-inner{text-align:center;display:flex;flex-direction:column;align-items:center}
+  #stage[data-theme="playful"] .hero p.lede{margin-inline:auto}
+  #stage[data-theme="playful"] .cta-row{justify-content:center}
+  #stage[data-theme="playful"] .hero-photo{width:100%;max-width:640px;margin:34px auto 0}
+  #stage[data-theme="playful"] .act:nth-child(3n+1){background:#FFF3E0}
+  #stage[data-theme="playful"] .act:nth-child(3n+2){background:#E9F7EE}
+  #stage[data-theme="playful"] .act:nth-child(3n+3){background:#E9F4FB}
+  #stage[data-theme="playful"] .act .ico{background:#fff}
+
+  /* THEME 2 — COZY */
+  #stage[data-theme="cozy"]{--bg:#FDF6F0;--surface:#FFFBF7;--fg:#4A3B34;--muted:#8A756A;--primary:#D67F77;--primary-ink:#fff;--font-display:'Baloo 2';--font-body:'Karla';--radius:22px;--btn-radius:16px;--photo-radius:26px;--shadow:0 18px 38px rgba(74,59,52,.11);--tour-bg:#FFFBF7;--tour-fg:#4A3B34;--tour-border:1.5px solid #E7D6CB;--focus:#E8A33D;--facts-line:#efe1d7;--photo-bg:linear-gradient(135deg,#F3D9C6,#E7C0A9);--photo-fg:#7c5a45;--ico-bg:#F6E7D8;--quote-bg:#F1E6DE;--quote-fg:#4A3B34;--card-shadow:0 10px 24px rgba(74,59,52,.07);--contact-bg:#8FA689;--contact-fg:#fff;--like-border:rgba(255,255,255,.7);--like-hover:rgba(255,255,255,.15)}
+  #stage[data-theme="cozy"] .hero{background:linear-gradient(180deg,#FBEFE6,var(--bg))}
+  #stage[data-theme="cozy"] .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}
+  #stage[data-theme="cozy"] .hero-photo{min-height:280px;border-radius:40% 40% 42% 42%/48% 48% 40% 40%}
+  @media(max-width:760px){#stage[data-theme="cozy"] .hero-inner{grid-template-columns:1fr}}
+  #stage[data-theme="cozy"] .act{border:1px solid #efe1d7}
+
+  /* THEME 3 — MODERN */
+  #stage[data-theme="modern"]{--bg:#fff;--surface:#F6FBFB;--fg:#16233A;--muted:#5A6B82;--primary:#0FB5A6;--primary-ink:#fff;--font-display:'Manrope';--font-body:'Inter';--radius:14px;--btn-radius:10px;--photo-radius:14px;--shadow:0 12px 28px rgba(16,35,58,.08);--tour-bg:#fff;--tour-fg:#16233A;--tour-border:1.5px solid #dbe3ea;--focus:#0FB5A6;--facts-line:#e6ecf1;--photo-bg:linear-gradient(135deg,#D9F1EF,#EAF1F6);--photo-fg:#3a5566;--ico-bg:#E4F6F4;--quote-bg:#F6FBFB;--quote-fg:#16233A;--card-border:1px solid #e6ecf1;--contact-bg:#16233A;--contact-fg:#fff;--like-border:rgba(255,255,255,.5);--like-hover:rgba(255,255,255,.1)}
+  #stage[data-theme="modern"] .hero{border-bottom:1px solid #eef2f5}
+  #stage[data-theme="modern"] .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  #stage[data-theme="modern"] .hero-photo{min-height:300px}
+  @media(max-width:760px){#stage[data-theme="modern"] .hero-inner{grid-template-columns:1fr}}
+  #stage[data-theme="modern"] .facts{background:transparent;box-shadow:none;border:1px solid #e6ecf1;gap:0}
+  #stage[data-theme="modern"] .fact{border-right:1px solid #e6ecf1}
+  #stage[data-theme="modern"] .fact:last-child{border-right:none}
+
+  /* THEME 4 — NATURAL */
+  #stage[data-theme="natural"]{--bg:#EFEDE1;--surface:#F8F6EC;--fg:#3A4030;--muted:#6F7560;--primary:#586B3A;--primary-ink:#fff;--font-display:'Cabin';--font-body:'Work Sans';--radius:16px;--btn-radius:12px;--photo-radius:16px;--shadow:0 14px 30px rgba(58,64,48,.10);--tour-bg:transparent;--tour-fg:#3A4030;--tour-border:1.5px solid #C4C3A6;--focus:#C08457;--facts-line:#dedcc9;--photo-bg:linear-gradient(135deg,#CBD3A9,#B7A98A);--photo-fg:#4b4a33;--ico-bg:#E6E7D2;--quote-bg:#E7E7D4;--quote-fg:#3A4030;--contact-bg:#3A4030;--contact-fg:#F1EFE2;--like-border:rgba(241,239,226,.5);--like-hover:rgba(241,239,226,.1)}
+  #stage[data-theme="natural"] .hero-inner{text-align:center;display:flex;flex-direction:column;align-items:center;max-width:760px}
+  #stage[data-theme="natural"] .hero p.lede{margin-inline:auto}
+  #stage[data-theme="natural"] .cta-row{justify-content:center}
+  #stage[data-theme="natural"] .hero-photo{width:100%;max-width:680px;margin:34px auto 0;min-height:240px}
+  #stage[data-theme="natural"] .acts{grid-template-columns:1fr 1fr;gap:0 34px}
+  #stage[data-theme="natural"] .act{background:transparent;border-bottom:1px solid #dedcc9;border-radius:0;padding:20px 4px;display:flex;gap:16px;align-items:flex-start}
+  #stage[data-theme="natural"] .act .ico{margin-bottom:0;flex:none;background:transparent;font-size:24px;width:auto;height:auto}
+  @media(max-width:600px){#stage[data-theme="natural"] .acts{grid-template-columns:1fr}}
+
+  #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:#1a1f2b;color:#fff;padding:14px 20px;border-radius:14px;font-size:14.5px;font-weight:600;box-shadow:0 16px 40px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:80;max-width:90vw;text-align:center}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+  <!-- LANDING -->
+  <main class="home" id="home">
+    <div class="home-head">
+      <div class="logo"><span class="mk">🧸</span> LA Playland Childcare</div>
+      <h1>Four style directions for your new website</h1>
+      <p class="sub">Hi Flora! Here are four looks for your new site — the same info in each, just styled differently. Tap any card to see the full homepage, then tell me which one feels most like Playland.</p>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <p class="home-foot">Photos shown are placeholders — your real photos go in when we build the site.<br>Made for LA Playland Childcare · West Los Angeles</p>
+  </main>
+
+  <!-- VIEWER -->
+  <section id="viewer" hidden>
+    <div class="vbar">
+      <button class="back" id="backBtn">← All styles</button>
+      <div class="vtitle" id="vtitle"></div>
+      <div class="nav">
+        <button id="prevBtn" aria-label="Previous style">Prev</button>
+        <button id="nextBtn" aria-label="Next style">Next</button>
+      </div>
+    </div>
+    <div class="vscroll" id="vscroll">
+      <div id="stage"></div>
+    </div>
+  </section>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  var PHONE_TEXT="(310) 869-9975", PHONE_TEL="+13108699975";
+
+  var order=["playful","cozy","modern","natural"];
+  var info={
+    playful:{name:"Playful & colorful", vibe:"Bright, cheerful and full of energy"},
+    cozy:{name:"Warm & cozy",           vibe:"Soft, homey and nurturing"},
+    modern:{name:"Clean & modern",      vibe:"Simple, calm and professional"},
+    natural:{name:"Nature / Montessori",vibe:"Earthy, gentle and grounded"}
+  };
+
+  var acts=[
+    ["🎵","Music &amp; singing","Songs, finger-plays and rhythm from many cultures."],
+    ["🩰","Dancing &amp; movement","Playful movement that builds coordination and confidence."],
+    ["🎨","Art &amp; crafts","Hands-on making that sparks imagination."],
+    ["📖","Story time","Books and early reading to grow a love of language."],
+    ["🧩","Circle time","Sharing, listening and learning together as a group."],
+    ["🌤️","Indoor &amp; outdoor play","Toys, swings and active play, rain or shine."],
+    ["🍂","Seasonal activities","Special projects that change with the seasons."],
+    ["🤝","Kindergarten-ready","Gentle routines that build independence for school."]
+  ];
+
+  /* ---- build landing cards ---- */
+  var grid=document.getElementById('grid');
+  grid.innerHTML=order.map(function(k,i){
+    return '<a class="pcard" href="#" role="button" data-open="'+k+'" aria-label="View the '+info[k].name+' style">'+
+      '<div class="pv" data-go="'+k+'">'+
+        '<div class="pk">Licensed home daycare · West LA</div>'+
+        '<div class="ph">A warm little home where kids get to be kids.</div>'+
+        '<div class="pp">Music, art, dancing and outdoor play for ages 1–4½.</div>'+
+        '<div class="ppill">📞 Call '+PHONE_TEXT+'</div>'+
+      '</div>'+
+      '<div class="meta">'+
+        '<div class="cnum">Option '+(i+1)+'</div>'+
+        '<h3>'+info[k].name+'</h3>'+
+        '<p>'+info[k].vibe+'.</p>'+
+        '<span class="tapnote">Tap to view the full page</span>'+
+      '</div>'+
+    '</a>';
+  }).join('');
+
+  /* ---- full homepage markup (same for every theme) ---- */
+  function homepage(){
+    var a=acts.map(function(x){return '<div class="act"><div class="ico">'+x[0]+'</div><div><h3>'+x[1]+'</h3><p>'+x[2]+'</p></div></div>';}).join('');
+    return ''+
+    '<div class="topbar">'+
+      '<div class="brand"><span class="mark">🧸</span> LA Playland Childcare</div>'+
+      '<nav><a href="#about">About</a><a href="#acts">Activities</a><a href="#visit">Visit</a></nav>'+
+      '<a class="btn btn-call" href="tel:'+PHONE_TEL+'">📞 Call '+PHONE_TEXT+'</a>'+
+    '</div>'+
+    '<header class="hero"><div class="hero-inner">'+
+      '<div class="hero-copy">'+
+        '<div class="kicker">Licensed home daycare in West Los Angeles</div>'+
+        '<h1>A warm little home where kids get to be kids.</h1>'+
+        '<p class="lede">Music, art, dancing and outdoor play for ages 1 to 4½ — in a small, caring group led by Flora, who has looked after little ones for over 20 years.</p>'+
+        '<div class="cta-row"><a class="btn btn-call" href="tel:'+PHONE_TEL+'">📞 Call '+PHONE_TEXT+'</a><a class="btn btn-tour" href="#visit">Book a tour</a></div>'+
+      '</div>'+
+      '<div class="photo hero-photo"><span>your photo here</span></div>'+
+    '</div></header>'+
+    '<div class="wrap" style="margin-top:-28px;position:relative;z-index:2"><div class="facts">'+
+      '<div class="fact"><div class="big">1–4½</div><div class="sm">years old</div></div>'+
+      '<div class="fact"><div class="big">12–14</div><div class="sm">small, caring group</div></div>'+
+      '<div class="fact"><div class="big">8–5</div><div class="sm">Mon–Fri</div></div>'+
+      '<div class="fact"><div class="big">CPR</div><div class="sm">&amp; First-Aid certified</div></div>'+
+    '</div></div>'+
+    '<section class="block" id="acts"><div class="wrap"><div class="eyebrow">A full, joyful day</div><h2>Room to play, create and grow</h2><p class="sec-lede">Every day mixes free play with gentle structure, so children stay curious, social and happy.</p><div class="acts">'+a+'</div></div></section>'+
+    '<section class="block" id="about"><div class="wrap"><div class="about"><div class="photo" style="min-height:300px"><span>photo of Flora</span></div><div><div class="eyebrow">Meet Flora</div><h2>Home-style care from a familiar, trusted face</h2><p class="sec-lede">Flora has cared for little ones for over 20 years — parents call her the “baby whisperer.” She keeps the group small and her home warm, so every child feels safe, seen and at home from the very first day.</p></div></div></div></section>'+
+    '<section class="block"><div class="wrap"><div class="quote"><p>“We toured three places. This was the only one that felt like a real home — and now our daughter runs to the door every single morning.”</p><div class="who">A parent at LA Playland <em>· sample review, your real ones go here</em></div></div></div></section>'+
+    '<section class="block" id="visit"><div class="wrap"><div class="contact"><h2>Come see us</h2><div class="cinfo">2200 Glendon Ave, Los Angeles, CA<br>Open Monday–Friday, 8:00am–5:00pm<br>'+PHONE_TEXT+'</div><div class="cta-row"><a class="btn btn-call" href="tel:'+PHONE_TEL+'">📞 Call '+PHONE_TEXT+'</a><a class="btn btn-tour" href="tel:'+PHONE_TEL+'">Book a tour</a></div><div class="like"><button type="button" id="likeBtn">💛 I like this look</button></div></div></div></section>'+
+    '<footer>LA Playland Childcare — licensed home daycare, West Los Angeles · Design concept</footer>';
+  }
+
+  var stage=document.getElementById('stage');
+  stage.innerHTML=homepage();
+
+  /* ---- navigation ---- */
+  var home=document.getElementById('home'), viewer=document.getElementById('viewer'),
+      vtitle=document.getElementById('vtitle'), vscroll=document.getElementById('vscroll');
+  var current=0;
+
+  function open(theme){
+    current=order.indexOf(theme);
+    stage.setAttribute('data-theme',theme);
+    viewer.style.setProperty('--bg', getComputedStyle(stage).backgroundColor);
+    vtitle.textContent='Option '+(current+1)+' — '+info[theme].name;
+    home.style.display='none';
+    viewer.hidden=false;
+    vscroll.scrollTop=0;
+    window.scrollTo(0,0);
+  }
+  function close(){viewer.hidden=true;home.style.display='';}
+  function step(d){open(order[(current+d+order.length)%order.length]);}
+
+  grid.addEventListener('click',function(e){
+    var card=e.target.closest('[data-open]'); if(!card) return;
+    e.preventDefault(); open(card.getAttribute('data-open'));
+  });
+  document.getElementById('backBtn').addEventListener('click',close);
+  document.getElementById('prevBtn').addEventListener('click',function(){step(-1);});
+  document.getElementById('nextBtn').addEventListener('click',function(){step(1);});
+
+  var toast=document.getElementById('toast'),tt;
+  stage.addEventListener('click',function(e){
+    if(e.target && e.target.id==='likeBtn'){
+      var t=order[current];
+      toast.textContent='Great choice — Option '+(current+1)+', '+info[t].name+'! Tell Ben the number and he’ll build it out. 💛';
+      toast.classList.add('show'); clearTimeout(tt); tt=setTimeout(function(){toast.classList.remove('show');},3400);
+    }
+  });
+</script>
+</body>
+</html>
